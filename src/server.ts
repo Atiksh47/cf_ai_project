@@ -13,12 +13,13 @@ import {
   createUIMessageStreamResponse,
   type ToolSet
 } from "ai";
-import { openai } from "@ai-sdk/openai";
+import { createWorkersAI } from "workers-ai-provider";
 import { processToolCalls, cleanupMessages } from "./utils";
 import { tools, executions } from "./tools";
-// import { env } from "cloudflare:workers";
+import { env } from "cloudflare:workers";
 
-const model = openai("gpt-4o-2024-11-20");
+const workersai = createWorkersAI({ binding: env.AI });
+const model = workersai("@cf/meta/llama-3-8b-instruct");
 // Cloudflare AI Gateway
 // const openai = createOpenAI({
 //   apiKey: env.OPENAI_API_KEY,
@@ -61,11 +62,21 @@ export class Chat extends AIChatAgent<Env> {
         });
 
         const result = streamText({
-          system: `You are a helpful assistant that can do various tasks... 
+          system: `You are an AI Creative Writing Assistant, designed to help writers with all aspects of their creative process. You can help with:
+
+- Brainstorming story ideas and plot concepts
+- Creating and developing characters
+- Building story outlines and structure
+- Scheduling writing sessions and setting goals
+- Tracking writing progress and word counts
+- Providing writing prompts and inspiration
+- Organizing writing projects and notes
+
+You're encouraging, creative, and knowledgeable about storytelling techniques. You remember the user's writing projects, characters, and preferences to provide personalized assistance.
 
 ${getSchedulePrompt({ date: new Date() })}
 
-If the user asks to schedule a task, use the schedule tool to schedule the task.
+If the user asks to schedule a writing session or reminder, use the schedule tool.
 `,
 
           messages: convertToModelMessages(processedMessages),
