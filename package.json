@@ -1,7 +1,7 @@
 {
-	"name": "cloudflare-agent-starter",
+	"name": "ai-creative-writing-assistant",
 	"version": "1.0.0",
-	"description": "",
+	"description": "AI-powered Creative Writing Assistant built on Cloudflare Workers with Llama 3",
 	"type": "module",
 	"private": true,
 	"scripts": {
@@ -15,7 +15,11 @@
 	"keywords": [
 		"cloudflare",
 		"ai",
-		"agents"
+		"agents",
+		"creative-writing",
+		"llama-3",
+		"writers",
+		"storytelling"
 	],
 	"author": "",
 	"license": "MIT",

@@ -1,25 +1,26 @@
-# 🤖 Chat Agent Starter Kit
+# ✍️ AI Creative Writing Assistant
 
 ![npm i agents command](./npm-agents-banner.svg)
 
 <a href="https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/agents-starter"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"/></a>
 
-A starter template for building AI-powered chat agents using Cloudflare's Agent platform, powered by [`agents`](https://www.npmjs.com/package/agents). This project provides a foundation for creating interactive chat experiences with AI, complete with a modern UI and tool integration capabilities.
+An AI-powered Creative Writing Assistant built on Cloudflare's Agent platform, powered by [`agents`](https://www.npmjs.com/package/agents) and Llama 3. This application helps writers with all aspects of their creative process, from brainstorming ideas to structuring stories.
 
 ## Features
 
-- 💬 Interactive chat interface with AI
-- 🛠️ Built-in tool system with human-in-the-loop confirmation
-- 📅 Advanced task scheduling (one-time, delayed, and recurring via cron)
-- 🌓 Dark/Light theme support
-- ⚡️ Real-time streaming responses
-- 🔄 State management and chat history
-- 🎨 Modern, responsive UI
+- ✍️ **Creative Writing Tools** - Brainstorm ideas, create characters, generate prompts
+- 📖 **Story Development** - Build outlines, track progress, structure narratives
+- ⏰ **Writing Sessions** - Schedule writing time and set creative goals
+- 💬 **Interactive Chat** - Natural conversation with Llama 3 AI model
+- 🛠️ **Smart Tools** - Automated writing assistance with contextual help
+- 🌓 **Dark/Light Theme** - Comfortable writing environment
+- ⚡️ **Real-time Responses** - Instant creative feedback and suggestions
+- 🔄 **Memory & State** - Remembers your projects and writing preferences
 
 ## Prerequisites
 
-- Cloudflare account
-- OpenAI API key
+- Cloudflare account with Workers AI enabled
+- Llama 3 model access (included with Cloudflare Workers AI)
 
 ## Quick Start
 

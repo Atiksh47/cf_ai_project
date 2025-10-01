@@ -19,11 +19,11 @@ import { ToolInvocationCard } from "@/components/tool-invocation-card/ToolInvoca
 import {
   Bug,
   Moon,
-  Robot,
   Sun,
   Trash,
   PaperPlaneTilt,
-  Stop
+  Stop,
+  PencilSimple
 } from "@phosphor-icons/react";
 
 // List of tools that require human confirmation
@@ -200,7 +200,7 @@ export default function Chat() {
               <Card className="p-6 max-w-md mx-auto bg-neutral-100 dark:bg-neutral-900">
                 <div className="text-center space-y-4">
                   <div className="bg-[#F48120]/10 text-[#F48120] rounded-full p-3 inline-flex">
-                    <Robot size={24} />
+                    <PencilSimple size={24} />
                   </div>
                   <h3 className="font-semibold text-lg">Welcome to AI Writing Assistant</h3>
                   <p className="text-muted-foreground text-sm">
@@ -370,7 +370,7 @@ export default function Chat() {
                 placeholder={
                   pendingToolCallConfirmation
                     ? "Please respond to the tool confirmation above..."
-                    : "Send a message..."
+                    : "Ask me to help with your writing..."
                 }
                 className="flex w-full border border-neutral-200 dark:border-neutral-700 px-3 py-2  ring-offset-background placeholder:text-neutral-500 dark:placeholder:text-neutral-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-300 dark:focus-visible:ring-neutral-700 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-neutral-900 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm min-h-[24px] max-h-[calc(75dvh)] overflow-hidden resize-none rounded-2xl !text-base pb-10 dark:bg-neutral-900"
                 value={agentInput}
