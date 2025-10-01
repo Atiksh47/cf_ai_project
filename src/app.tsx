@@ -202,9 +202,12 @@ export default function Chat() {
                   <div className="bg-[#F48120]/10 text-[#F48120] rounded-full p-3 inline-flex">
                     <PencilSimple size={24} />
                   </div>
-                  <h3 className="font-semibold text-lg">Welcome to AI Writing Assistant</h3>
+                  <h3 className="font-semibold text-lg">
+                    Welcome to AI Writing Assistant
+                  </h3>
                   <p className="text-muted-foreground text-sm">
-                    Your creative companion for all things writing. Try asking me to:
+                    Your creative companion for all things writing. Try asking
+                    me to:
                   </p>
                   <ul className="text-sm text-left space-y-2">
                     <li className="flex items-center gap-2">
@@ -460,7 +463,8 @@ function HasWorkersAI() {
                   Workers AI Not Configured
                 </h3>
                 <p className="text-neutral-600 dark:text-neutral-300 mb-1">
-                  The Creative Writing Assistant requires Cloudflare Workers AI to function properly.
+                  The Creative Writing Assistant requires Cloudflare Workers AI
+                  to function properly.
                 </p>
                 <p className="text-neutral-600 dark:text-neutral-300">
                   Please ensure your{" "}
@@ -478,7 +482,8 @@ function HasWorkersAI() {
                     "ai": {`{ "binding": "AI", "remote": true }`}
                   </code>
                   <br />
-                  Make sure you have Workers AI enabled in your Cloudflare dashboard.
+                  Make sure you have Workers AI enabled in your Cloudflare
+                  dashboard.
                 </p>
               </div>
             </div>

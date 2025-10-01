@@ -76,31 +76,37 @@ npm run deploy
 The AI Writing Assistant comes with 6 powerful tools to help with your creative process:
 
 ### 🧠 **Brainstorm Story Ideas**
+
 Generate creative story concepts, plot ideas, and writing prompts tailored to your preferred genre and theme.
 
 **Example:** "Help me brainstorm a sci-fi story about time travel"
 
 ### 👤 **Create Character Profiles**
+
 Build detailed character profiles with background, personality traits, motivations, strengths, and flaws.
 
 **Example:** "Create a protagonist for my fantasy novel"
 
 ### ⏰ **Schedule Writing Sessions**
+
 Set up dedicated writing time, reminders, and creative goal deadlines using flexible scheduling.
 
 **Example:** "Schedule a writing session for tomorrow at 2 PM"
 
 ### 📊 **Track Writing Progress**
+
 Record word counts, milestones, and project progress to stay motivated and organized.
 
 **Example:** "I just finished chapter 3, update my progress"
 
 ### ✨ **Generate Writing Prompts**
+
 Get creative writing prompts and exercises to spark inspiration and overcome writer's block.
 
 **Example:** "Give me a character-focused writing prompt"
 
 ### 📖 **Create Story Outlines**
+
 Build comprehensive story structures with plot points, character arcs, and key scenes.
 
 **Example:** "Help me outline my mystery novel"
@@ -108,6 +114,7 @@ Build comprehensive story structures with plot points, character arcs, and key s
 ## How It Works
 
 ### AI-Powered Creativity
+
 This Writing Assistant uses **Llama 3** (via Cloudflare Workers AI) to provide intelligent, contextual help with your writing projects. The AI:
 
 - **Remembers your projects** and writing style preferences
@@ -116,6 +123,7 @@ This Writing Assistant uses **Llama 3** (via Cloudflare Workers AI) to provide i
 - **Learns from your interactions** to offer better assistance
 
 ### Smart Tool System
+
 Each writing tool combines **structured templates** with **AI enhancement**:
 
 1. **Tool Template** - Provides consistent formatting and structure
@@ -123,6 +131,7 @@ Each writing tool combines **structured templates** with **AI enhancement**:
 3. **Dynamic Output** - Results are tailored to your specific needs and conversation history
 
 ### Memory & State Management
+
 The assistant uses **Cloudflare Durable Objects** to:
 
 - **Persist conversation history** across sessions
@@ -144,6 +153,7 @@ The assistant uses **Cloudflare Durable Objects** to:
 ## Example Conversations
 
 ### Story Brainstorming
+
 ```
 You: "I want to write a fantasy novel but I'm stuck on ideas"
 Assistant: *uses brainstormStoryIdeas tool*
@@ -155,6 +165,7 @@ Would you like me to elaborate on any of these concepts or help you develop char
 ```
 
 ### Character Development
+
 ```
 You: "Create a mentor character for my protagonist"
 Assistant: *uses createCharacter tool*
@@ -176,6 +187,7 @@ Would you like me to develop any aspect of Marcus further?"
 ```
 
 ### Writing Progress Tracking
+
 ```
 You: "I just finished chapter 5, update my progress"
 Assistant: *uses trackWritingProgress tool*
@@ -204,7 +216,7 @@ This project fulfills all requirements for the Cloudflare Internship Assignment:
 ✅ **LLM:** Uses Llama 3 on Workers AI  
 ✅ **Workflow/Coordination:** Uses Workers and Durable Objects  
 ✅ **User Input:** Chat interface via Cloudflare Pages  
-✅ **Memory/State:** Persistent state with Durable Objects  
+✅ **Memory/State:** Persistent state with Durable Objects
 
 ## Customization
 
@@ -218,7 +230,11 @@ const newWritingTool = tool({
   inputSchema: z.object({
     // Define parameters
   }),
-  execute: async ({ /* parameters */ }) => {
+  execute: async (
+    {
+      /* parameters */
+    }
+  ) => {
     // Tool logic here
     return "Your response";
   }

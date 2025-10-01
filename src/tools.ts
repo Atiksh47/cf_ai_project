@@ -14,17 +14,27 @@ import { scheduleSchema } from "agents/schedule";
  * Generates creative story concepts and plot ideas
  */
 const brainstormStoryIdeas = tool({
-  description: "Generate creative story ideas, plot concepts, and writing prompts",
-  inputSchema: z.object({ 
-    genre: z.string().optional().describe("Genre of the story (e.g., sci-fi, fantasy, mystery)"),
-    theme: z.string().optional().describe("Theme or mood (e.g., adventure, romance, horror)"),
-    length: z.string().optional().describe("Story length (e.g., short story, novel, flash fiction)")
+  description:
+    "Generate creative story ideas, plot concepts, and writing prompts",
+  inputSchema: z.object({
+    genre: z
+      .string()
+      .optional()
+      .describe("Genre of the story (e.g., sci-fi, fantasy, mystery)"),
+    theme: z
+      .string()
+      .optional()
+      .describe("Theme or mood (e.g., adventure, romance, horror)"),
+    length: z
+      .string()
+      .optional()
+      .describe("Story length (e.g., short story, novel, flash fiction)")
   }),
   execute: async ({ genre, theme, length }) => {
-    const genreText = genre ? ` in the ${genre} genre` : '';
-    const themeText = theme ? ` with a ${theme} theme` : '';
-    const lengthText = length ? ` for a ${length}` : '';
-    
+    const genreText = genre ? ` in the ${genre} genre` : "";
+    const themeText = theme ? ` with a ${theme} theme` : "";
+    const lengthText = length ? ` for a ${length}` : "";
+
     return `Here are some creative story ideas${genreText}${themeText}${lengthText}:
 
 1. **The Memory Thief**: A protagonist discovers they can steal memories from others, but each stolen memory replaces one of their own.
@@ -46,10 +56,18 @@ These ideas can be developed further with character development, world-building,
  * Generates detailed character profiles for stories
  */
 const createCharacter = tool({
-  description: "Generate detailed character profiles with background, personality, and motivations",
+  description:
+    "Generate detailed character profiles with background, personality, and motivations",
   inputSchema: z.object({
-    name: z.string().optional().describe("Character name (if not provided, will suggest names)"),
-    role: z.string().describe("Character's role in the story (e.g., protagonist, antagonist, mentor)"),
+    name: z
+      .string()
+      .optional()
+      .describe("Character name (if not provided, will suggest names)"),
+    role: z
+      .string()
+      .describe(
+        "Character's role in the story (e.g., protagonist, antagonist, mentor)"
+      ),
     genre: z.string().optional().describe("Story genre for context"),
     age: z.number().optional().describe("Character age")
   }),
@@ -57,7 +75,7 @@ const createCharacter = tool({
     const nameText = name || "Alex";
     const ageText = age ? `, age ${age}` : "";
     const genreText = genre ? ` in a ${genre} story` : "";
-    
+
     return `**Character Profile: ${nameText}**
 
 **Role:** ${role}${genreText}${ageText}
@@ -183,10 +201,13 @@ const trackWritingProgress = tool({
   inputSchema: z.object({
     projectName: z.string().describe("Name of the writing project"),
     wordCount: z.number().describe("Current word count"),
-    milestone: z.string().optional().describe("Any milestone reached (e.g., 'Chapter 3 complete')")
+    milestone: z
+      .string()
+      .optional()
+      .describe("Any milestone reached (e.g., 'Chapter 3 complete')")
   }),
   execute: async ({ projectName, wordCount, milestone }) => {
-    const milestoneText = milestone ? `\n\n🎉 Milestone: ${milestone}` : '';
+    const milestoneText = milestone ? `\n\n🎉 Milestone: ${milestone}` : "";
     return `📝 Writing Progress Updated for "${projectName}"
 
 Current word count: ${wordCount.toLocaleString()} words${milestoneText}
@@ -200,15 +221,24 @@ Keep up the great work! Every word brings you closer to your goal. Would you lik
  * Provides creative writing prompts and exercises
  */
 const generateWritingPrompt = tool({
-  description: "Generate creative writing prompts and exercises to inspire writing",
+  description:
+    "Generate creative writing prompts and exercises to inspire writing",
   inputSchema: z.object({
-    type: z.string().optional().describe("Type of prompt (e.g., character, dialogue, setting, conflict)"),
-    difficulty: z.string().optional().describe("Difficulty level (beginner, intermediate, advanced)")
+    type: z
+      .string()
+      .optional()
+      .describe(
+        "Type of prompt (e.g., character, dialogue, setting, conflict)"
+      ),
+    difficulty: z
+      .string()
+      .optional()
+      .describe("Difficulty level (beginner, intermediate, advanced)")
   }),
   execute: async ({ type, difficulty }) => {
-    const typeText = type ? ` (${type} focused)` : '';
-    const difficultyText = difficulty ? ` for ${difficulty} writers` : '';
-    
+    const typeText = type ? ` (${type} focused)` : "";
+    const difficultyText = difficulty ? ` for ${difficulty} writers` : "";
+
     const prompts = [
       "Write about a character who discovers their reflection in a mirror is acting independently.",
       "Create a dialogue between two people where one is lying, but the reader doesn't know which one.",
@@ -219,9 +249,9 @@ const generateWritingPrompt = tool({
       "Create a scene where two old friends meet for the first time in years, but one of them doesn't recognize the other.",
       "Write about a place that exists only in dreams, but someone finds a way to bring objects back from it."
     ];
-    
+
     const selectedPrompt = prompts[Math.floor(Math.random() * prompts.length)];
-    
+
     return `✨ Writing Prompt${typeText}${difficultyText}
 
 **Prompt:** ${selectedPrompt}
@@ -247,18 +277,24 @@ Set a timer for 15-30 minutes and see where this prompt takes you!`;
  * Helps structure stories with plot points and character arcs
  */
 const createStoryOutline = tool({
-  description: "Generate story outlines with plot structure, character arcs, and key scenes",
+  description:
+    "Generate story outlines with plot structure, character arcs, and key scenes",
   inputSchema: z.object({
     storyTitle: z.string().describe("Title or concept of the story"),
     genre: z.string().optional().describe("Story genre"),
-    length: z.string().optional().describe("Intended length (short story, novella, novel)"),
+    length: z
+      .string()
+      .optional()
+      .describe("Intended length (short story, novella, novel)"),
     mainConflict: z.string().optional().describe("Main conflict or challenge")
   }),
   execute: async ({ storyTitle, genre, length, mainConflict }) => {
-    const genreText = genre ? ` (${genre})` : '';
-    const lengthText = length ? ` for a ${length}` : '';
-    const conflictText = mainConflict ? `\n\n**Main Conflict:** ${mainConflict}` : '';
-    
+    const genreText = genre ? ` (${genre})` : "";
+    const lengthText = length ? ` for a ${length}` : "";
+    const conflictText = mainConflict
+      ? `\n\n**Main Conflict:** ${mainConflict}`
+      : "";
+
     return `📖 Story Outline: "${storyTitle}"${genreText}${lengthText}${conflictText}
 
 **ACT I - Setup (25%)**
@@ -317,7 +353,7 @@ export const tools = {
  * Implementation of confirmation-required tools
  * This object contains the actual logic for tools that need human approval
  * Each function here corresponds to a tool above that doesn't have an execute function
- * 
+ *
  * Note: All current tools execute automatically, so this object is empty.
  * Add tools here if you want to require human confirmation for certain actions.
  */
