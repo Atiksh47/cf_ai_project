@@ -124,14 +124,15 @@ export default {
     const url = new URL(request.url);
 
     if (url.pathname === "/check-open-ai-key") {
-      const hasOpenAIKey = !!process.env.OPENAI_API_KEY;
+      // Check if Workers AI is properly configured
+      const hasWorkersAI = !!env.AI;
       return Response.json({
-        success: hasOpenAIKey
+        success: hasWorkersAI
       });
     }
-    if (!process.env.OPENAI_API_KEY) {
+    if (!env.AI) {
       console.error(
-        "OPENAI_API_KEY is not set, don't forget to set it locally in .dev.vars, and use `wrangler secret bulk .dev.vars` to upload it to production"
+        "Workers AI binding is not configured. Make sure 'ai' binding is set in wrangler.jsonc"
       );
     }
     return (
